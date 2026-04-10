@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terrace Atlas | Global Supporter Network</title>
+  <meta
+    name="description"
+    content="Discover supporter communities, fan meetup spots, and nearby sports fans across clubs, leagues, and countries."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@500;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="#top">
+        <span class="brand-mark">TA</span>
+        <span class="brand-copy">
+          <strong>Terrace Atlas</strong>
+          <span>Global supporter network operating system</span>
+        </span>
+      </a>
+      <nav class="site-nav">
+        <a href="#discover">Discover</a>
+        <a href="#graph">Graph</a>
+        <a href="#meetups">Meetups</a>
+        <a href="#launch-kit">Launch Kit</a>
+      </nav>
+      <button class="nav-cta" type="button" data-scroll-target="#fan-passport">Join the beta</button>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Built for supporter culture, not just listings</p>
+          <h1>The world map for sports communities and matchday meetups.</h1>
+          <p class="hero-text">
+            Find nearby supporter groups, discover where fans gather, and create
+            the local matchday scene when your team does not have one yet.
+          </p>
+          <div class="hero-actions">
+            <button class="primary-button" type="button" data-scroll-target="#discover">Explore communities</button>
+            <button class="secondary-button" type="button" data-scroll-target="#fan-passport">Set fan preferences</button>
+          </div>
+          <ul class="hero-metrics">
+            <li>
+              <strong id="metric-groups">0</strong>
+              <span>Seeded supporter groups</span>
+            </li>
+            <li>
+              <strong id="metric-countries">0</strong>
+              <span>Countries represented</span>
+            </li>
+            <li>
+              <strong id="metric-leagues">0</strong>
+              <span>Leagues in the graph</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="hero-panel">
+          <div class="hero-card card-grid">
+            <p class="card-label">Live platform view</p>
+            <div class="signal-row">
+              <span>Barcelona fans in Paris</span>
+              <strong>34 active</strong>
+            </div>
+            <div class="signal-row">
+              <span>Yankees watch party in London</span>
+              <strong>Starts in 3h</strong>
+            </div>
+            <div class="signal-row">
+              <span>Maple Leafs supporters in Berlin</span>
+              <strong>Looking for host venue</strong>
+            </div>
+            <div class="mini-graph">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="thesis-section">
+        <div class="section-heading">
+          <p class="eyebrow">Product thesis</p>
+          <h2>From branch directory to global fan infrastructure.</h2>
+        </div>
+        <div class="thesis-grid">
+          <article class="thesis-card">
+            <h3>Discover</h3>
+            <p>
+              Pull together supporter-club maps, pub listings, official branch
+              directories, and independent fan groups into one global discovery layer.
+            </p>
+          </article>
+          <article class="thesis-card">
+            <h3>Connect</h3>
+            <p>
+              Let fans sign in, declare team and league loyalties, and find nearby
+              people who want the same matchday atmosphere.
+            </p>
+          </article>
+          <article class="thesis-card">
+            <h3>Activate</h3>
+            <p>
+              When a city has no established group, turn demand into an event page,
+              host search, and founding supporters list.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="discover-section" id="discover">
+        <div class="section-heading">
+          <p class="eyebrow">Community explorer</p>
+          <h2>Find organized supporter groups and meetup anchors.</h2>
+        </div>
+        <div class="explorer-layout">
+          <aside class="filters-card">
+            <label>
+              <span>Search team, city, country, venue</span>
+              <input id="search-input" type="search" placeholder="Try Arsenal, Toronto, pub, NBA">
+            </label>
+            <label>
+              <span>League</span>
+              <select id="league-filter">
+                <option value="all">All leagues</option>
+              </select>
+            </label>
+            <label>
+              <span>Country</span>
+              <select id="country-filter">
+                <option value="all">All countries</option>
+              </select>
+            </label>
+            <label>
+              <span>Community status</span>
+              <select id="status-filter">
+                <option value="all">All statuses</option>
+                <option value="organized">Organized branch</option>
+                <option value="growing">Growing scene</option>
+                <option value="needs-host">Needs host venue</option>
+              </select>
+            </label>
+            <div class="filters-summary">
+              <strong id="results-count">0 communities</strong>
+              <p>Seed data combines official branches, diaspora watch groups, and meetup-ready fan circles.</p>
+            </div>
+          </aside>
+
+          <div class="results-panel">
+            <div class="results-toolbar">
+              <p>Global supporter graph</p>
+              <button class="ghost-button" type="button" id="reset-filters">Reset filters</button>
+            </div>
+            <div id="results-grid" class="results-grid"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="graph-section" id="graph">
+        <div class="section-heading">
+          <p class="eyebrow">Network graph</p>
+          <h2>See how supporter culture travels across clubs, leagues, and cities.</h2>
+        </div>
+        <div class="graph-layout">
+          <div class="graph-card">
+            <div id="graph-nodes" class="graph-nodes"></div>
+          </div>
+          <div class="graph-legend">
+            <article>
+              <h3>What this graph represents</h3>
+              <p>
+                Teams connect to leagues, leagues connect to countries, and
+                communities connect to cities where fans actually gather.
+              </p>
+            </article>
+            <article>
+              <h3>Future live signals</h3>
+              <p>
+                Real-time RSVP counts, fan availability, venue capacity, social links,
+                and match calendar overlays can all sit on top of this data model.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="passport-section" id="fan-passport">
+        <div class="section-heading">
+          <p class="eyebrow">Fan passport</p>
+          <h2>Tell the platform what you watch and who you want to meet.</h2>
+        </div>
+        <div class="passport-layout">
+          <form id="passport-form" class="passport-card">
+            <label>
+              <span>Your city</span>
+              <input id="passport-city" name="city" type="text" placeholder="Paris">
+            </label>
+            <label>
+              <span>Favorite team</span>
+              <input id="passport-team" name="team" type="text" placeholder="FC Barcelona">
+            </label>
+            <label>
+              <span>League interest</span>
+              <select id="passport-league" name="league">
+                <option value="">Any league</option>
+              </select>
+            </label>
+            <label>
+              <span>Matchday mode</span>
+              <select id="passport-mode" name="mode">
+                <option value="pub">Pub or supporters bar</option>
+                <option value="cafe">Cafe or casual meetup</option>
+                <option value="home">Home watch party</option>
+                <option value="travel">Traveling supporters</option>
+              </select>
+            </label>
+            <button class="primary-button" type="submit">Find matching communities</button>
+            <button class="secondary-button" type="button" id="google-signin-placeholder">Preview Google sign-in flow</button>
+          </form>
+
+          <div class="passport-results">
+            <div class="match-summary">
+              <h3>Recommended fan circles</h3>
+              <p id="match-copy">
+                Start with your city, team, or league and the platform will surface nearby communities and likely founding members.
+              </p>
+            </div>
+            <div id="match-results" class="match-results"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="meetups-section" id="meetups">
+        <div class="section-heading">
+          <p class="eyebrow">Meetup launchpad</p>
+          <h2>When a city has no official branch, give fans a way to start one.</h2>
+        </div>
+        <div class="meetup-layout">
+          <form id="meetup-form" class="meetup-card">
+            <label>
+              <span>City</span>
+              <input id="meetup-city" name="city" type="text" placeholder="Berlin">
+            </label>
+            <label>
+              <span>Team or fan identity</span>
+              <input id="meetup-team" name="team" type="text" placeholder="Toronto Maple Leafs">
+            </label>
+            <label>
+              <span>Proposed venue</span>
+              <input id="meetup-venue" name="venue" type="text" placeholder="Local bar, cafe, or TBD">
+            </label>
+            <label>
+              <span>What do you need?</span>
+              <select id="meetup-need" name="need">
+                <option value="host">A host venue</option>
+                <option value="fans">More founding fans</option>
+                <option value="captain">A local organizer</option>
+              </select>
+            </label>
+            <button class="primary-button" type="submit">Create meetup signal</button>
+          </form>
+
+          <div class="meetup-feed">
+            <h3>Founding signals</h3>
+            <div id="meetup-signals" class="signal-feed"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="launch-section" id="launch-kit">
+        <div class="section-heading">
+          <p class="eyebrow">Launch kit</p>
+          <h2>Foundation for a GitHub-ready product repository.</h2>
+        </div>
+        <div class="launch-grid">
+          <article class="launch-card">
+            <h3>Structured seed data</h3>
+            <p>
+              Supporter communities are stored as reusable objects with league,
+              country, status, venue, social links, and source metadata.
+            </p>
+          </article>
+          <article class="launch-card">
+            <h3>Expandable auth layer</h3>
+            <p>
+              The Google sign-in CTA is wired as a product placeholder so it can be
+              swapped for Firebase, Supabase, Auth.js, or a custom backend later.
+            </p>
+          </article>
+          <article class="launch-card">
+            <h3>Path to full platform</h3>
+            <p>
+              This MVP can evolve into live mapping, official branch claims,
+              moderation, calendars, and cross-team supporter graph analytics.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <template id="community-card-template">
+    <article class="community-card">
+      <div class="community-head">
+        <div>
+          <p class="community-league"></p>
+          <h3 class="community-team"></h3>
+        </div>
+        <span class="community-status"></span>
+      </div>
+      <p class="community-location"></p>
+      <p class="community-venue"></p>
+      <p class="community-description"></p>
+      <div class="community-meta"></div>
+      <div class="community-socials"></div>
+    </article>
+  </template>
+
+  <script src="src/data/supporterData.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>
